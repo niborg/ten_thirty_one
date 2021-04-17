@@ -1,0 +1,98 @@
+<h1>Ten Thirty One</h1>
+
+<div>
+  <form action='/' method="post">
+    <div>
+      <h2>Seller information</h2>
+      <p>
+        Income:
+        <input type="number" name="model[income]" value="<%= @model&.income %>">
+      </p>
+      <p>
+        Status (only married supported currently):
+        <select name="model[filing_status]">
+          <option value="single" disabled>Single</option>
+          <option value="married">Married</option>
+        </select>
+      </p>
+    </div>
+
+    <div>
+      <h2>Sold property</h2>
+      <p>
+        Sale price:
+        <input
+          type="number"
+          name="model[original_sale_price]"
+          value="<%= @model&.original_sale_price %>"
+        >
+      </p>
+      <p>
+        Basis:
+        <input
+          type="number"
+          name="model[original_basis]"
+          value="<%= @model&.original_basis %>"
+        >
+      </p>
+    </div>
+
+    <div>
+      <h2>Purchased property</h2>
+      <p>
+        Purchase price:
+        <input
+          type="number"
+          name="model[purchase_price]"
+          value="<%= @model&.purchase_price %>"
+        >
+      </p>
+      <!-- <p>
+        Eventual sale price:
+        <input
+          type="number"
+          name="model[purchase_property_sale_price]"
+          value="<%= @model&.purchase_property_sale_price %>"
+        >
+      </p> -->
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+    </div>
+  </form>
+
+  <% if @result %>
+  <h1>Result</h1>
+  <p>
+    Original property tax amount: <%= number_to_currency(@result.original_property_tax_amount) %>
+  </p>
+  <p>
+    Original property effective tax rate: <%= (@result.original_property_effective_tax_rate * 100).round(1) %>%
+  </p>
+  <p>
+    Purchased property tax amount: <%= number_to_currency(@result.purchase_property_tax_amount) %>
+  </p>
+  <p>
+    Purchased property effective tax rate: <%= (@result.purchase_property_effective_tax_rate * 100).round(1) %>%
+  </p>
+  <p>
+    Total tax: <%= number_to_currency(@result.total_tax) %>
+  </p>
+  <p>
+    Total effective tax rate: <%= (@result.total_effective_tax_rate * 100).round(1) %>%
+  </p>
+  <p>
+    Total tax without 1031: <%= number_to_currency(@result.total_tax_without_1031) %>
+  </p>
+  <p>
+    Total effective tax rate without 1031: <%= (@result.total_effective_tax_rate_without_1031 * 100).round(1) %>%
+  </p>
+  <p>
+    Savings with 1031: <%= number_to_currency(@result.total_tax_without_1031 - @result.total_tax) %>
+  </p>
+  <% end %>
+</div>
+
+<div style="margin-top: 30px">
+  <a href="https://github.com/niborg/ten_thirty_one">Code repository</a>
+</div>
