@@ -12,7 +12,8 @@ class CaTaxCalculator
     TaxTier.new(range: 117_269..599_016, rate: 0.093),
     TaxTier.new(range: 599_017..718_814, rate: 0.103),
     TaxTier.new(range: 718_815..1_198_024, rate: 0.113),
-    TaxTier.new(range: 1_198_024..Float::INFINITY, rate: 0.123),
+    TaxTier.new(range: 1_198_025..1_999_999, rate: 0.123),
+    TaxTier.new(range: 2_000_000..Float::INFINITY, rate: 0.123),
   ].freeze
 
   def initialize(gain:, income:)

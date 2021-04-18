@@ -5,8 +5,8 @@ class FedTaxCalculator
 
   TAX_TIERS = [
     TaxTier.new(range: 0..80_800, rate: 0),
-    TaxTier.new(range: 80_801..501_600, rate: 0.15),
-    TaxTier.new(range: 501_601..Float::INFINITY, rate: 0.20)
+    TaxTier.new(range: 80_801..496_600, rate: 0.15),
+    TaxTier.new(range: 496_601..Float::INFINITY, rate: 0.20)
   ].freeze
 
   def initialize(gain:)
